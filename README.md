@@ -48,6 +48,11 @@ machine. Existing tool repositories remain independent, not copied into knowledg
 
 ## Changes implemented in this checkout
 
+- `opencode/vm_admin.md` is a primary-agent adapter. The dotfiles setup registers
+	it globally through a local symlink; it resolves this repository and reads the
+	live instructions below rather than copying them. Network-agent registration
+	is optional and owned by its separate repository. These initial adapters do
+	not perform the full umbrella/submodule migration described above.
 - `AGENTS.md` is the neutral role index and shared knowledge contract.
 - `opencode.json` loads only that index, not a specific host's full state.
 - `vm_admin_agent/vm_agent_context.md` is host-neutral, with OS detection,
