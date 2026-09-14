@@ -158,6 +158,16 @@ Last updated: 2026-09-12
     environment variable interpolation in the compose `command` array.
 
 ## 9. Maintenance Log
+*   **2026-09-14:** Hardened `~/.tmux/setup.sh` for clean deploy-to-new-Ubuntu-server
+    (fixes from real remote bring-up). (a) `setup.sh` now installs `fontconfig`
+    on Linux when `fc-cache` is missing (bare servers lack it → fonts step
+    failed). (b) `setup.sh` now actually installs herdr + opencode instead of
+    only warning; opencode install auto-sets npm prefix to `$HOME/.local`
+    (avoids EACCES on unwritable `/usr/local/lib/node_modules`, and
+    `~/.local/bin` is already on PATH). Reverted global `opencode.jsonc` to
+    schema-only (kept portable; agent instructions load per-project from
+    `agent_workspace/opencode.json`). README manual steps updated in sync.
+    Commit & push `~/.tmux`.
 *   **2026-09-13:** Added Terminal Ecosystem health tracking. New
     `~/update-ecosystem.sh` (manual-run only, per policy) updates tmux/zsh
     (apt), oh-my-zsh + powerlevel10k (git), herdr, opencode, fonts. New
