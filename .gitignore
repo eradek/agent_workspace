@@ -1,2 +1,13 @@
 .aider*
 *.swp
+
+# Local host bindings, credentials, runtime artifacts; never knowledge sources.
+.local/
+.env
+.env.*
+*.env
+*.key
+*.pem
+__pycache__/
+*.py[cod]
+.DS_Store

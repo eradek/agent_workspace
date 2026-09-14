@@ -1,11 +1,17 @@
 # VM Infrastructure & Networking Knowledge Base (ynwa_vm.md)
 
-Canonical knowledge base for the VM Administrator Agent. This file is the
-single source of truth for the host's infrastructure, services, and security
-state. The login banner (`/etc/profile.d/99-welcome-banner.sh`) sources this
-file for its `print-kb` output.
+Historical host-specific knowledge for the original VM, with logical ID
+`ynwa-vm`. This is NOT a default profile for other servers. Confirm the target
+with the user and read `hosts/README.md` before applying any procedure here.
+Treat recorded state as dated observations and revalidate it against the host.
+The original VM's login banner references this path for `print-kb`; keep the
+path stable until that integration is explicitly migrated and tested.
 
-Last updated: 2026-09-12
+Owner: `vm_admin_agent`. Verification: inherited historical notes; not
+revalidated during the portability review. Revalidate before every system
+change and after OS, service, or network changes.
+
+Last updated: 2026-09-14 (documentation only; live host state not revalidated)
 
 ## 1. System Overview
 *   **Operating System:** Ubuntu 24.04.4 LTS
@@ -158,6 +164,11 @@ Last updated: 2026-09-12
     environment variable interpolation in the compose `command` array.
 
 ## 9. Maintenance Log
+*   **2026-09-14 — Documentation portability review:** Marked this record as
+    specific to the original VM and removed automatic loading on other hosts.
+    Preserved its path for the banner integration. Redacted a historical
+    password literal; Git history was not rewritten. No host configuration,
+    service, banner, or deployment link was changed during this review.
 *   **2026-09-14:** Hardened `~/.tmux/setup.sh` for clean deploy-to-new-Ubuntu-server
     (fixes from real remote bring-up). (a) `setup.sh` now installs `fontconfig`
     on Linux when `fc-cache` is missing (bare servers lack it → fonts step
@@ -223,7 +234,7 @@ Last updated: 2026-09-12
     swap panes (herdr defaults, avoid the help-panel-unset pitfall),
     `prefix+p/n` tabs (removed direct `shift+left/right` to avoid tmux clash).
 *   **2026-09-04:** Fixed Filestash login flow. Compose hardcoded
-    `TestPass123` for SFTP users — replaced with `${SFTP_<USER>_PASS}`
+    `<historical-placeholder-password>` for SFTP users — replaced with `${SFTP_<USER>_PASS}`
     interpolation so real `.env` passwords take effect. Changed all SFTP user
     UIDs/GIDs to `1000:1000` (was 1000-1003) so every user can write to
     their host share (all owned by `1000:1000`). In Filestash admin
