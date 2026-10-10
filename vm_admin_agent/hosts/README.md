@@ -6,6 +6,7 @@ recipe. Never select a profile just because the operating system matches.
 | Logical host ID | Canonical profile | Scope / status |
 | --- | --- | --- |
 | `ynwa-vm` | [../ynwa_vm.md](../ynwa_vm.md) | Original VM; historical observations; target binding must be confirmed |
+| `work-muc-lhv582` | [work-muc-lhv582/profile.md](work-muc-lhv582/profile.md) | Ubuntu 24.04 work laptop; enrolled 2026-09-14; observed-only, no desired state defined |
 
 The current checkout host is **not enrolled** by cloning this repository. No
 Linux/macOS host is implicitly mapped to the legacy VM.
